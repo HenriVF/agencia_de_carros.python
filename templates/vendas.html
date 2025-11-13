@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Vendas</h3>
+<a href="/venda/nova" class="btn btn-success mb-3">Nova Venda</a>
+
+<div class="vendas-grid">
+    {% for v in vendas %}
+    <div class="venda-card p-3 shadow-sm rounded bg-white">
+        <p><strong>ID:</strong> {{ v.id }}</p>
+        <p><strong>Cliente:</strong> {{ v.cliente_nome }}</p>
+        <p><strong>Veiculo:</strong> {{ v.veiculo_marca }} {{ v.veiculo_modelo }}</p>
+        <p><strong>Cor:</strong> {{ v.veiculo_cor }}</p>
+        <p><strong>Data:</strong> {{ v.data_venda }}</p>
+        <p><strong>Valor:</strong> R$ {{ "%.2f"|format(v.valor) }}</p>
+        
+        <div>
+            <a href="/venda/editar/{{ v.id }}" class="btn btn-primary btn-sm">Editar</a>
+            <a href="/venda/deletar/{{ v.id }}" class="btn btn-danger btn-sm">Apagar</a>
+        </div>
+
+    </div>
+    
+    {% endfor %}
+</div>
+
+<style>
+.vendas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+.venda-card {
+    border: 1px solid #dee2e6;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.venda-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+</style>
+{% endblock %}

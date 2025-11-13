@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h3>Clientes</h3>
+
+
+<a href="/cliente/novo" class="btn btn-primary mb-3">Novo Cliente</a>
+
+
+<div class="clientes-grid">
+    {% for c in clientes %}
+
+
+    <div class="cliente-card p-3 shadow-sm rounded bg-white">
+        <p><strong>ID:</strong>{{c.id}}</p>
+        <p><strong>Nome:</strong>{{c.nome}}</p>
+        <p><strong>Email:</strong>{{c.email}}</p>
+        <p><strong>Telefone:</strong>{{c.telefone}}</p>
+        <p><strong>Endereço:</strong>{{c.endereco}}</p>
+        <a href="/cliente/editar/{{c.id}}" class="btn btn-primary btn-sm mb-2">Editar</a>
+    </div>
+{% endfor %}
+</div>
+<style>
+    .clientes-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+    .cliente-card{
+        border: 1px solid #dee2e6;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cliente-card:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+</style>
+
+
+
+
+
+
+
+
+{% endblock %}

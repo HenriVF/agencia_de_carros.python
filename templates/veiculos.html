@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title%} {{'Editar Veiculo' if veiculo else 'Novo Veiculo'}} {% endblock %}
+{% block content %}
+
+
+<div class="container mt-3">
+<h2>{{'Editar Veiculo' if veiculo else 'Cadastrar Veiculo'}}</h2>
+
+
+<form method="post">
+    <div class="mb-3">
+        <label for="marca" class="form-label">Marca</label>
+        <input type="text" class="form-control" id="marca" name="marca" value="{{veiculo.marca if veiculo else ''}}" required>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="modelo" class="form-label">Modelo</label>
+        <input type="text" class="form-control" id="modelo" name="modelo" value="{{veiculo.modelo if veiculo else ''}}" required>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="ano" class="form-label">Ano</label>
+        <input type="number" class="form-control" id="ano" name="ano" value="{{veiculo.ano if veiculo else ''}}" required>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="preco" class="form-label">Preço</label>
+        <input type="number" step="0.01" class="form-control" id="preco" name="preco" value="{{veiculo.preco if veiculo else ''}}" required>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="cor" class="form-label">Cor</label>
+        <input type="text" class="form-control" id="cor" name="cor" value="{{veiculo.cor if veiculo else ''}}" required>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="{{ url_for('veiculos')}}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+
+</div>
+
+
+{% endblock %}
